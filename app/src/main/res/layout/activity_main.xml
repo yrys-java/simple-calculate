@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#222831"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/textf"
+        android:layout_width="176dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="6dp"
+        android:backgroundTint="#FFFFFF"
+        android:inputType="numberDecimal"
+        android:padding="16dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/texta"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/texta"
+        android:layout_width="176dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="6dp"
+        android:backgroundTint="#FFFFFF"
+        android:inputType="numberDecimal"
+        android:padding="16dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/textf"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="58dp"
+        android:background="@drawable/custom_button"
+        android:text="+"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/multiply"
+        app:layout_constraintTop_toBottomOf="@+id/textf"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/subtract"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="58dp"
+        android:background="@drawable/custom_button"
+        android:text="-"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/divide"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/texta"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/multiply"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="58dp"
+        android:background="@drawable/custom_button"
+        android:text="*"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/add"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/divide"
+        app:layout_constraintTop_toBottomOf="@+id/textf"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/divide"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="58dp"
+        android:background="@drawable/custom_button"
+        android:text="/"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/multiply"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/subtract"
+        app:layout_constraintTop_toBottomOf="@+id/texta"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:text="ANSWER"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divide"
+        app:layout_constraintVertical_bias="0.151"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
