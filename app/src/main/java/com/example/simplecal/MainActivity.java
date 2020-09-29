@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button add, subtract, multiply, divide;
     TextView result;
     double resultAnswer = 0;
-    String operation = "";
+    String srtDouble;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,10 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         answer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String srt = String.valueOf(resultAnswer);
 
                 Intent intent = new Intent(MainActivity.this, AnswerActivity.class);
-                intent.putExtra("message", srt);
+                intent.putExtra("message", srtDouble);
                 startActivity(intent);
             }
         });
@@ -70,20 +69,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.add:
-                operation = "+";
                 resultAnswer = numberOne + numberTwo;
+                srtDouble = String.format("%.3f",resultAnswer);
                 break;
             case R.id.subtract:
-                operation = "-";
                 resultAnswer = numberOne - numberTwo;
+                srtDouble = String.format("%.3f",resultAnswer);
                 break;
             case R.id.multiply:
-                operation = "*";
                 resultAnswer = numberOne * numberTwo;
+                srtDouble = String.format("%.3f",resultAnswer);
                 break;
             case R.id.divide:
-                operation = "/";
+                if (numberTwo == 0) {
+                    srtDouble = "Division by zero is not possible";
+                } else {
                 resultAnswer = numberOne / numberTwo;
+                srtDouble = String.format("%.3f",resultAnswer);
+                }
                 break;
             default:
                 break;
