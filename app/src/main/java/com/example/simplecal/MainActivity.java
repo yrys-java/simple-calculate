@@ -1,5 +1,6 @@
 package com.example.simplecal;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String srtDouble;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -33,16 +34,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         multiply = (Button) findViewById(R.id.multiply);
         divide = (Button) findViewById(R.id.divide);
 
+        if (savedInstanceState != null) {
+            resultAnswer = savedInstanceState.getDouble("resultAnswer");
+            srtDouble = savedInstanceState.getString("srtDouble");
+        }
 
         Button answer = findViewById(R.id.answer);
         answer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(MainActivity.this, AnswerActivity.class);
-                intent.putExtra("message", srtDouble);
-                startActivity(intent);
-            }
+                    Intent intent = new Intent(MainActivity.this, AnswerActivity.class);
+                    intent.putExtra("message", srtDouble);
+                    startActivity(intent);
+                }
         });
 
         add.setOnClickListener(this);
@@ -51,6 +55,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         divide.setOnClickListener(this);
 
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putDouble("resultAnswer", resultAnswer);
+        outState.putString("srtDouble", srtDouble);
     }
 
     @Override
@@ -70,22 +81,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.add:
                 resultAnswer = numberOne + numberTwo;
-                srtDouble = String.format("%.3f",resultAnswer);
+                srtDouble = String.format("%.3f", resultAnswer);
                 break;
             case R.id.subtract:
                 resultAnswer = numberOne - numberTwo;
-                srtDouble = String.format("%.3f",resultAnswer);
+                srtDouble = String.format("%.3f", resultAnswer);
                 break;
             case R.id.multiply:
                 resultAnswer = numberOne * numberTwo;
-                srtDouble = String.format("%.3f",resultAnswer);
+                srtDouble = String.format("%.3f", resultAnswer);
                 break;
             case R.id.divide:
                 if (numberTwo == 0) {
                     srtDouble = "Division by zero is not possible";
                 } else {
-                resultAnswer = numberOne / numberTwo;
-                srtDouble = String.format("%.3f",resultAnswer);
+                    resultAnswer = numberOne / numberTwo;
+                    srtDouble = String.format("%.3f", resultAnswer);
                 }
                 break;
             default:
